@@ -2,7 +2,7 @@ type: install
 jpsVersion: 6.1.1
 logo: /images/redis-ssl-addon.svg
 name: Redis Encrypted Connection
-id: mysql-based-ssl
+id: redis-based-ssl
 targetEditions: any
 categories:
   - apps/dev-and-admin-tools
