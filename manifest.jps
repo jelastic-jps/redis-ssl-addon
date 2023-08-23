@@ -1,0 +1,47 @@
+type: install
+jpsVersion: 6.1.1
+logo: /images/redis-ssl-addon.svg
+name: Redis Encrypted Connection
+id: mysql-based-ssl
+targetEditions: any
+categories:
+  - apps/dev-and-admin-tools
+description: Enforce DB Connection to use SSL/TLS in Redis cluster/standalone. Certificate folder /var/lib/jelastic/keys/SSL-TLS.
+baseUrl: https://raw.githubusercontent.com/jelastic-jps/redis-ssl-addon/main
+
+targetNodes:
+  nodeType:
+    - redis
+    - redis7
+    - redis6
+
+settings:
+  fields:
+    - type: list
+      name: envName
+      caption: Environment
+      required: true
+      values: []
+
+    - type: list
+      name: nodeGroups
+      caption: Node Group(s)
+      required: true
+      multiSelect: true
+      dependsOn:
+        envName: {}
+
+onBeforeInit: scripts/onBeforeInit.js
+
+onInstall:
+  - install [${settings.nodeGroups}]:
+      envName: ${settings.envName}
+      jps: logic.jps?_r=${fn.random}
+      settings:
+        nodeGroups: ${settings.nodeGroups}
+        envName: ${settings.envName}
+        
+success:
+  email: false
+  text: |
+    Your SSL/TLS Encrypted Connection for Redis application has been successfully deployed to ${settings.envName} (target layers: ${settings.nodeGroups}). Please use port 6380 for secure connection.
