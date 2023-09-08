@@ -136,7 +136,6 @@ actions:
 
   generateCerts:
     - cmd[${this.affectedNodes}]: |-
-        cd /var/lib/mysql; rm -rf ca-key.pem ca.pem client-cert.pem client-key.pem private_key.pem public_key.pem server-cert.pem server-key.pem;
         [ -f /usr/local/sbin/selfcertgen ] && rm -f /usr/local/sbin/selfcertgen;
         [ -f /usr/local/sbin/copyCert ] && rm -f /usr/local/sbin/copyCert;
         wget -O /usr/local/sbin/selfcertgen ${baseUrl}/scripts/selfcertgen?_r=${fn.random};
