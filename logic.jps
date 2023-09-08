@@ -17,7 +17,7 @@ globals:
   redisConfig: /etc/redis.conf
   certFolder: /var/lib/jelastic/keys/SSL-TLS
   keyPass: ${fn.password}
-  redliVersion: 0.9.0
+  redliVersion: 0.10.0
   mainRulesFile: /etc/sysconfig/iptables
   customRulesFile: /etc/sysconfig/iptables-custom
   nftMainRulesFile: /etc/nftables/platform-defined.nft
