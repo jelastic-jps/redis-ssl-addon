@@ -88,7 +88,8 @@ actions:
     - env.control.AddContainerEnvVars[${targetNodes.nodeGroup}]:
         vars: {"KEY_PASS":"${globals.keyPass}"}
     - cmd[${targetNodes.nodeGroup}]: |-
-        mkdir -p /var/lib/jelastic/keys/SSL-TLS/server/
+        rm -rf ${globals.certFolder}/*;
+        mkdir -p ${globals.certFolder}/server/
         wget -O /usr/local/sbin/copyCert ${baseUrl}/scripts/copyCert?_r=${fn.random};
         chmod +x /usr/local/sbin/copyCert
       user: root
