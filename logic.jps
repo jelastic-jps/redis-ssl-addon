@@ -213,8 +213,6 @@ actions:
         done
         if grep -q '^port 0' ${globals.redisConfig}; then 
             sed -ci -e "s|port.*|port 6379|" ${globals.redisConfig};             
-        else 
-            echo "port 0" >> ${globals.redisConfig};
         fi
         for i in client.crt client.key root.crt
         do
