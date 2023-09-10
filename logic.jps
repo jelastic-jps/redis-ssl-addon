@@ -68,6 +68,7 @@ onAfterClone:
       settings:        
         nodeGroups: ${settings.nodeGroups}
         envName: ${settings.envName}
+        clone: true
 
 onAfterMigrate:
   - reGenerateCerts
@@ -87,8 +88,10 @@ actions:
     - getMasterId
     - env.control.AddContainerEnvVars[${targetNodes.nodeGroup}]:
         vars: {"KEY_PASS":"${globals.keyPass}"}
+    - if (${settings.clone:false}):
+      - cmd[${targetNodes.nodeGroup}]: rm -rf ${globals.certFolder}/*
+        user: root
     - cmd[${targetNodes.nodeGroup}]: |-
-        rm -rf ${globals.certFolder}/*;
         mkdir -p ${globals.certFolder}/server/
         wget -O /usr/local/sbin/copyCert ${baseUrl}/scripts/copyCert?_r=${fn.random};
         chmod +x /usr/local/sbin/copyCert
