@@ -5,7 +5,7 @@ name: SSL/TLS Encrypted Connection
 id: redis-based-ssl
 targetEditions: any
 description: Enforce DB Connection to use SSL/TLS. Certificate folder /var/lib/jelastic/keys/SSL-TLS
-baseUrl: https://raw.githubusercontent.com/jelastic-jps/redis-ssl-addon/main
+baseUrl: https://cdn.jsdelivr.net/gh/jelastic-jps/redis-ssl-addon@main
 
 targetNodes:
   nodeType:
