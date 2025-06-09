@@ -14,7 +14,7 @@ The add-on can be installed on top of the **Redis** nodes only.
 1\. Log into your Virtuozzo Application Platform and [import](https://www.virtuozzo.com/application-platform-docs/environment-import/) the add-on's manifest from this repository:
 
 ```
-https://github.com/jelastic-jps/redis-ssl-addon/blob/main/manifest.jps
+https://cdn.jsdelivr.net/gh/jelastic-jps/redis-ssl-addon@main/manifest.jps
 ```
 
 ![import Redis SSL add-on](images/01-import-redis-ssl-addon.png)
